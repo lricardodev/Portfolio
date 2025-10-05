@@ -11,7 +11,7 @@ export default function TerminalPage() {
 
   const [theme, setTheme] = useState<ThemeName>(() =>
     (typeof window !== "undefined" &&
-      (localStorage.getItem("terminal_theme") as ThemeName)) || "matrix"
+      (localStorage.getItem("terminal_theme") as ThemeName)) || "ubuntu"
   );
   const [consoleOutput, setConsoleOutput] = useState<string[]>([]);
   const consoleRef = useRef<HTMLDivElement>(null);
@@ -82,7 +82,7 @@ export default function TerminalPage() {
   const clearConsole = () => {
     setConsoleOutput([]);
   };
-  
+
   const reset = () => {
     window.location.reload();
   }

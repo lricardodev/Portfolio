@@ -1,36 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import './LandingPage.css'
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import "./LandingPage.css";
 
 export const LandingPage = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if there's a saved theme in localStorage
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme')
-      return savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      return (
+        savedTheme === "dark" ||
+        (!savedTheme &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
     }
-    return false
-  })
+    return false;
+  });
 
   useEffect(() => {
-    // Apply theme to body when it changes
     if (isDarkMode) {
-      document.body.classList.add('dark-theme')
-      localStorage.setItem('theme', 'dark')
+      document.body.classList.add("dark-theme");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.body.classList.remove('dark-theme')
-      localStorage.setItem('theme', 'light')
+      document.body.classList.remove("dark-theme");
+      localStorage.setItem("theme", "light");
     }
-  }, [isDarkMode])
+  }, [isDarkMode]);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
-  }
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
-    <div className={`landing-page ${isDarkMode ? 'dark-theme' : ''}`}>
+    <div className={`landing-page ${isDarkMode ? "dark-theme" : ""}`}>
       {/* Header */}
       <header className="header">
         <nav className="nav">
@@ -39,20 +41,32 @@ export const LandingPage = () => {
           </div>
           <div className="nav-controls">
             <ul className="nav-menu">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#skills">Skills</a></li>
-              <li><a href="#contact">Contact</a></li>
-              <li><Link href="/terminal">Terminal</Link></li>
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              <li>
+                <a href="#projects">Projects</a>
+              </li>
+              <li>
+                <a href="#skills">Skills</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+              <li>
+                <Link href="/terminal">Terminal</Link>
+              </li>
             </ul>
             <div className="theme-toggle">
-              <button 
-                className={`theme-switch ${isDarkMode ? 'dark' : 'light'}`}
+              <button
+                className={`theme-switch ${isDarkMode ? "dark" : "light"}`}
                 onClick={toggleTheme}
-                aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+                aria-label={
+                  isDarkMode ? "Switch to light theme" : "Switch to dark theme"
+                }
               >
                 <span className="theme-icon">
-                  {isDarkMode ? '☀️' : '🌙'}
+                  {isDarkMode ? "☀️" : "🌙"}
                 </span>
               </button>
             </div>
@@ -67,7 +81,8 @@ export const LandingPage = () => {
             Welcome to my <span className="highlight">Code Laboratory</span>
           </h1>
           <p className="hero-subtitle">
-            Here I experiment, learn and develop creative solutions through programming
+            Here I experiment, learn and develop creative solutions through
+            programming
           </p>
           <div className="hero-buttons">
             <button className="btn btn-primary">View Projects</button>
@@ -78,9 +93,9 @@ export const LandingPage = () => {
           <div className="code-animation">
             <div className="code-line">const innovation = "creativity";</div>
             <div className="code-line">let learning = "constant";</div>
-            <div className="code-line">function solve() {'{'}</div>
-            <div className="code-line">  return "solutions";</div>
-            <div className="code-line">{'}'}</div>
+            <div className="code-line">function solve() {"{"}</div>
+            <div className="code-line"> return "solutions";</div>
+            <div className="code-line">{"}"}</div>
           </div>
         </div>
       </section>
@@ -189,5 +204,5 @@ export const LandingPage = () => {
         </div>
       </footer>
     </div>
-  )
-}
+  );
+};

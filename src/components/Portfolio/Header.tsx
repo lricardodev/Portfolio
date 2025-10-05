@@ -1,5 +1,3 @@
-// @ts-ignore
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -60,7 +58,7 @@ export function Header() {
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <Card className="p-2 glass-card-dark">
-                    {/* Header superior con logo y botón de tema */}
+                    {/* Top header with logo and theme button */}
                     <div className="flex items-center justify-between  md:mb-0">
                         <div className="flex items-center">
                             <Link href="/" className="flex items-center space-x-2">
@@ -78,7 +76,7 @@ export function Header() {
                         </div>
                     </div>
 
-                    {/* Navegación debajo del logo */}
+                    {/* Navigation below the logo */}
                     <nav className="md:hidden">
                         <ul className="flex space-x-1 overflow-x-auto scrollbar-hide justify-center">
                             {[
@@ -100,7 +98,7 @@ export function Header() {
                         </ul>
                     </nav>
 
-                    {/* Navegación desktop (centrada) */}
+                    {/* Naveigation desktop (entry) */}
                     <div className="hidden md:flex md:items-center md:justify-center md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2">
                         <nav>
                             <ul className="flex space-x-1">

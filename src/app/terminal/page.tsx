@@ -1,4 +1,4 @@
-import TerminalPage from "../../components/Terminal/TerminalPage";
+import TerminalPage from "@/components/terminal/TerminalPage";
 
 export default function Terminal() {
   return <TerminalPage />;

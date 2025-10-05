@@ -1,16 +1,9 @@
-import TerminalPage from "../components/Terminal/TerminalPage";
-import { LandingPage } from "../components/Landing/LandingPage";
-import Portfolio from "../components/Portfolio/Portfolio";
-import { GradientDemo } from "@/components/GradientDemo";
+import Portfolio from "../components/portfolio/Portfolio";
+
 export default function Home() {
   return (
     <div >
-      <div >
-        {/* <TerminalPage/> */}
-        {/* <LandingPage /> */}
-        <Portfolio />
-        {/* <GradientDemo/> */}
-      </div>
+      <Portfolio />
     </div>
   );
 }

@@ -1,34 +1,54 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import { Mail, Phone, MapPin, Twitter, Github, Linkedin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Header } from './Header';
 
-const AvatarFallback = ({ children }) => (
+interface AvatarFallbackProps {
+  children: ReactNode;
+}
+
+interface BadgeProps {
+  children: ReactNode;
+  className?: string;
+}
+
+interface Project {
+  icon: string;
+  title: string;
+  description: string;
+  tags: string[];
+}
+
+type Skills = {
+  [key: string]: string[];
+};
+
+const AvatarFallback: React.FC<AvatarFallbackProps> = ({ children }) => (
   <div className="flex items-center justify-center w-full h-full bg-zinc-800 rounded-2xl text-4xl">
     {children}
   </div>
 );
 
-const Badge = ({ children, className = "" }) => (
+const Badge: React.FC<BadgeProps> = ({ children, className = "" }) => (
   <span className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium bg-zinc-800 text-zinc-300 ${className}`}>
     {children}
   </span>
 );
 
 export default function PortfolioFusionado() {
-  const [isDark, setIsDark] = React.useState(true);
+  const [isDark, setIsDark] = useState<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const themeToSet = savedTheme ? savedTheme === 'dark' : prefersDark;
     setIsDark(themeToSet);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleThemeChange = () => {
       const currentTheme = document.documentElement.classList.contains('dark');
       setIsDark(currentTheme);
@@ -43,13 +63,13 @@ export default function PortfolioFusionado() {
     return () => observer.disconnect();
   }, []);
 
-  const projects = [
+  const projects: Project[] = [
     { icon: "🚀", title: "Algoritmo de Eratóstenes", description: "Implementación del algoritmo para encontrar números primos.", tags: ["JavaScript", "Algoritmos"] },
     { icon: "⚡", title: "Próximamente", description: "Nuevos proyectos en desarrollo.", tags: ["React", "TypeScript"] },
     { icon: "💡", title: "Experimentos", description: "Pruebas de código y experimentos.", tags: ["Node.js", "APIs"] }
   ];
 
-  const skills = {
+  const skills: Skills = {
     "Frontend": ["React", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS"],
     "Backend": ["Node.js", "Express", "Python", "REST APIs"],
     "Tools": ["Git", "VS Code", "Postman", "Docker"]
@@ -59,7 +79,7 @@ export default function PortfolioFusionado() {
     <div
       className="min-h-screen text-foreground transition-colors duration-300 relative"
       style={{
-        backgroundImage: `url('/${isDark ? 'imagen2.jpg' : 'white2.jpg'}')`,
+        backgroundImage: `url('/${isDark ? 'darkImage.jpg' : 'whiteImage.jpg'}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -89,21 +109,21 @@ export default function PortfolioFusionado() {
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><Mail className="w-5 h-5 text-primary" /></div>
                       <div>
                         <p className="text-xs text-muted-foreground uppercase">EMAIL</p>
-                        <p className="text-sm">richard@example.com</p>
+                        <p className="text-sm">lricardodev@gmail.com</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 bg-secondary rounded-xl">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><Phone className="w-5 h-5 text-primary" /></div>
                       <div>
                         <p className="text-xs text-muted-foreground uppercase">TELÉFONO</p>
-                        <p className="text-sm">+1 (213) 352-2795</p>
+                        <p className="text-sm">+52 (56) 1928-3816</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 p-4 bg-secondary rounded-xl">
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center"><MapPin className="w-5 h-5 text-primary" /></div>
                       <div>
                         <p className="text-xs text-muted-foreground uppercase">UBICACIÓN</p>
-                        <p className="text-sm">Sacramento, USA</p>
+                        <p className="text-sm">CMDX, México</p>
                       </div>
                     </div>
                   </div>
@@ -123,8 +143,15 @@ export default function PortfolioFusionado() {
                 <h2 className="text-4xl font-bold mb-4 dark-blue-gradient-text dark:silver-blue-gradient-text">Sobre Mí</h2>
                 <div className="h-1 w-12 bg-primary rounded mb-8"></div>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>Soy un Director Creativo y Diseñador UI/UX de Sydney, Australia. Disfruto convirtiendo problemas complejos en diseños simples, hermosos e intuitivos.</p>
-                  <p>Mi trabajo es construir tu sitio web para que sea funcional y fácil de usar, pero al mismo tiempo atractivo.</p>
+                  <p>
+                    I'm a web developer passionate about creating efficient and engaging digital solutions.
+                    With a strong focus on the JavaScript ecosystem,
+                    I specialize in building interactive user interfaces with React and robust backend services with Node.js.                  </p>
+                  <p>
+                    My goal is to transform ideas into functional and scalable products,
+                    always seeking to learn and apply best practices and the latest technologies.
+                    I'm always looking for new challenges to continue growing as a professional.
+                  </p>
                 </div>
               </section>
 
