@@ -1,0 +1,36 @@
+/* --- Wrapper centrado --- */
+.loaderWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* --- Spinner mínimo y performante --- */
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: currentColor; /* usa el color heredado */
+    color: hsl(0, 0%, 87%);
+    animation: spin 0.8s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Respeta preferencias de usuario para reducir movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .spinner {
+      animation: none;
+      border-right-color: currentColor;
+    }
+  }

@@ -165,3 +165,8 @@
     @apply backdrop-blur-xl bg-blue-900/10 border border-blue-400/20;
   }
 }
+
+html {
+  scroll-behavior: smooth; /* Opcional, para que todos los scrolls sean suaves */
+  scroll-padding-top: 120px; /* ¡Esta es la línea clave! Ajusta el valor si es necesario. */
+}

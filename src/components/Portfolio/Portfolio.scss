@@ -1,0 +1,573 @@
+// Portfolio SCSS - Efectos de animación y gradientes avanzados
+
+// Variables para colores y efectos
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+$silver-blue-gradient: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
+$neon-blue: #00d4ff;
+$neon-purple: #8b5cf6;
+
+// Keyframes para animaciones
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+// ANIMACIONES MEJORADAS PARA CARGA INICIAL
+@keyframes slide-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px) rotate(-5deg);
+    }
+
+    60% {
+        opacity: 0.7;
+        transform: translateX(10px) rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes slide-in-right {
+    0% {
+        opacity: 0;
+        transform: translateX(80px) rotate(5deg);
+    }
+
+    60% {
+        opacity: 0.7;
+        transform: translateX(-10px) rotate(-1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+@keyframes rotate-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-50px);
+    }
+
+    40% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translateY(0);
+    }
+
+    65% {
+        transform: scale(0.95);
+    }
+
+    80% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+// Nueva animación para el título PORTFOLIO
+@keyframes fade-zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        filter: blur(10px);
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+        filter: blur(0px);
+    }
+}
+
+// Nueva animación para el gradiente del nombre
+@keyframes gradient-text-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        filter: blur(5px);
+    }
+
+    40% {
+        opacity: 0.5;
+    }
+
+    70% {
+        transform: translateY(-5px) scale(1.02);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+    }
+}
+
+// Clases base para animaciones
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+.animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+// CLASES MEJORADAS CON DURACIONES MÁS LARGAS
+.animate-slide-in-up {
+    animation: slide-in-up 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-fill-mode: both;
+
+    &:nth-child(1) {
+        animation-delay: 0.2s;
+    }
+
+    &:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    &:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+}
+
+.animate-slide-in-left {
+    animation: slide-in-left 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-fill-mode: both;
+    animation-delay: 0.8s;
+}
+
+.animate-slide-in-right {
+    animation: slide-in-right 1.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-fill-mode: both;
+    animation-delay: 1s;
+}
+
+.animate-bounce-in {
+    animation: bounce-in 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+
+    &:nth-child(1) {
+        animation-delay: 1.2s;
+    }
+
+    &:nth-child(2) {
+        animation-delay: 1.4s;
+    }
+
+    &:nth-child(3) {
+        animation-delay: 1.6s;
+    }
+}
+
+.animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+}
+
+// Efectos de hover mejorados
+.hover-lift {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.hover-glow {
+    transition: all 0.4s ease;
+
+    &:hover {
+        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
+        transform: scale(1.05);
+    }
+}
+
+.hover-gradient {
+    transition: all 0.3s ease;
+    background: $primary-gradient;
+    background-size: 200% 200%;
+
+    &:hover {
+        background-position: 100% 0;
+        transform: scale(1.05);
+    }
+}
+
+// Gradientes avanzados
+.gradient-text-animated {
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 5s ease infinite;
+}
+
+.gradient-border-animated {
+    position: relative;
+    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background-size: 300% 300%;
+    animation: gradient-shift 4s ease infinite;
+    padding: 2px;
+    border-radius: 12px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: inherit;
+        border-radius: 10px;
+        z-index: -1;
+    }
+}
+
+.neon-glow {
+    box-shadow:
+        0 0 5px $neon-blue,
+        0 0 10px $neon-blue,
+        0 0 15px $neon-blue,
+        0 0 20px $neon-blue;
+}
+
+.neon-text {
+    color: $neon-blue;
+    text-shadow:
+        0 0 5px $neon-blue,
+        0 0 10px $neon-blue,
+        0 0 15px $neon-blue;
+}
+
+// Efectos de glass morphism mejorados
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-morphism-dark {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-morphism-colored {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+}
+
+// Efectos de partículas y brillo
+.particle-effect {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+        animation: rotate-slow 20s linear infinite;
+        pointer-events: none;
+    }
+}
+
+.sparkle-effect {
+    position: relative;
+
+    &::after {
+        content: '✨';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.2em;
+        animation: float 3s ease-in-out infinite;
+        opacity: 0.7;
+    }
+}
+
+// Efectos de scroll reveal
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Efectos de typing
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid $neon-blue;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: $neon-blue;
+    }
+}
+
+// Efectos de hover para botones
+.btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.6s;
+    }
+
+    &:hover::before {
+        left: 100%;
+    }
+
+    &:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+}
+
+// Efectos de loading
+.loading-dots {
+    &::after {
+        content: '';
+        animation: loading-dots 1.5s infinite;
+    }
+}
+
+@keyframes loading-dots {
+
+    0%,
+    20% {
+        content: '';
+    }
+
+    40% {
+        content: '.';
+    }
+
+    60% {
+        content: '..';
+    }
+
+    80%,
+    100% {
+        content: '...';
+    }
+}
+
+// Responsive animations
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+// EFECTOS ESPECÍFICOS MEJORADOS PARA EL PORTFOLIO
+.portfolio-hero {
+    .hero-title {
+        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 300% 300%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-shift 6s ease infinite, fade-zoom-in 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation-fill-mode: both;
+        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.4));
+    }
+
+    .hero-avatar {
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 300% 300%;
+            animation: gradient-shift 4s ease infinite;
+            border-radius: 50%;
+            z-index: -1;
+        }
+    }
+}
+
+.project-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        transition: left 0.8s;
+    }
+
+    &:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+        &::before {
+            left: 100%;
+        }
+    }
+}
+
+.skill-badge {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &:hover {
+        transform: scale(1.15) rotate(2deg);
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+    }
+}
+
+// Clase especial para el nombre principal con gradiente
+.hero-name-gradient {
+    animation: gradient-text-reveal 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation-fill-mode: both;
+    animation-delay: 0.5s;
+}
