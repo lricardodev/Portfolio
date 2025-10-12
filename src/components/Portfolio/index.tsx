@@ -4,35 +4,12 @@ import React, { useState, useEffect, useMemo, memo } from 'react';
 import { Mail, Phone, MapPin, Twitter, Github, Linkedin } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+import { BadgeProps, ContactPill, Project, Skills, SocialLink } from '@/types';
+import Loader from '@/helpers/loader';
 import { Header } from './Header';
-import Loader from '@/helpers/loader'; // <-- 1. Importa el Loader
+
 import './Portfolio.scss';
-
-// Types
-interface BadgeProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-interface Project {
-  icon: string;
-  title: string;
-  description: string;
-  tags: string[];
-}
-
-interface ContactPill {
-  icon: React.ComponentType<{ className?: string }>;
-  text: string;
-  animation: string;
-}
-
-interface SocialLink {
-  icon: React.ComponentType<{ className?: string }>;
-  label: string;
-}
-
-type Skills = Record<string, string[]>;
 
 // Memoized Components
 const Badge = memo<BadgeProps>(({ children, className = "" }) => (
@@ -150,9 +127,8 @@ const useTheme = () => {
   return isDark;
 };
 
-const useScrollReveal = (isLoading: boolean) => { // Recibe el estado
+const useScrollReveal = (isLoading: boolean) => {
   useEffect(() => {
-    // Si aún está cargando, no hagas nada.
     if (isLoading) return;
 
     const observer = new IntersectionObserver(
@@ -171,22 +147,20 @@ const useScrollReveal = (isLoading: boolean) => { // Recibe el estado
 
     return () => observer.disconnect();
 
-  }, [isLoading]); // Se ejecutará de nuevo cuando isLoading cambie
+  }, [isLoading]);
 };
-// Main Component
+
 export default function PortfolioFusionado() {
-  const [isLoading, setIsLoading] = useState(true); // <-- 2. Añade el estado de carga
+  const [isLoading, setIsLoading] = useState(true);
   const isDark = useTheme();
   useScrollReveal(isLoading);
 
-  // 3. Simula la carga de datos
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500); // 2.5 segundos de carga
-
-    return () => clearTimeout(timer);
-  }, []);
+    const img = new Image();
+    img.src = isDark ? '/darkImage.jpg' : '/whiteImage.jpg';
+    img.onload = () => setIsLoading(false);
+    img.onerror = () => setIsLoading(false);
+  }, [isDark]);
 
   const backgroundStyle = useMemo(() => ({
     backgroundImage: `url('/${isDark ? 'darkImage.jpg' : 'whiteImage.jpg'}')`,
@@ -197,7 +171,6 @@ export default function PortfolioFusionado() {
     transition: "background-image 0.3s ease-in-out"
   }), [isDark]);
 
-  // 4. Muestra el Loader si está cargando
   if (isLoading) {
     return <Loader />;
   }

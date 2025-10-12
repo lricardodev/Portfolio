@@ -1,12 +1,27 @@
-// Portfolio SCSS - Efectos de animación y gradientes avanzados
+// Portfolio SCSS - Diseño minimalista profesional con efectos neon sutiles
 
-// Variables para colores y efectos
-$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-$secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-$dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-$silver-blue-gradient: linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%);
-$neon-blue: #00d4ff;
-$neon-purple: #8b5cf6;
+// Variables para colores y efectos - Paleta azul-morado profesional
+$primary-blue: #3B82F6;
+$primary-blue-light: #60A5FA;
+$primary-purple: #8B5CF6;
+$primary-purple-light: #A78BFA;
+
+// Gradientes principales
+$primary-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+$secondary-gradient: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
+$accent-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #A78BFA 100%);
+
+// Fondos
+$bg-light: #F9FAFB;
+$bg-light-secondary: #E5E7EB;
+$bg-dark: #111827;
+$bg-dark-secondary: #1E1B4B;
+
+// Efectos neon sutiles
+$neon-blue: #3B82F6;
+$neon-purple: #8B5CF6;
+$neon-glow-blue: rgba(59, 130, 246, 0.3);
+$neon-glow-purple: rgba(139, 92, 246, 0.3);
 
 // Keyframes para animaciones
 @keyframes float {
@@ -25,13 +40,13 @@ $neon-purple: #8b5cf6;
 
     0%,
     100% {
-        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        box-shadow: 0 0 15px $neon-glow-blue;
         transform: scale(1);
     }
 
     50% {
-        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
-        transform: scale(1.05);
+        box-shadow: 0 0 25px $neon-glow-purple;
+        transform: scale(1.02);
     }
 }
 
@@ -262,22 +277,22 @@ $neon-purple: #8b5cf6;
     animation: rotate-slow 20s linear infinite;
 }
 
-// Efectos de hover mejorados
+// Efectos de hover profesionales y sutiles
 .hover-lift {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
     }
 }
 
 .hover-glow {
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 
     &:hover {
-        box-shadow: 0 0 40px rgba(0, 212, 255, 0.6);
-        transform: scale(1.05);
+        box-shadow: 0 0 20px $neon-glow-blue;
+        transform: scale(1.02);
     }
 }
 
@@ -288,13 +303,43 @@ $neon-purple: #8b5cf6;
 
     &:hover {
         background-position: 100% 0;
-        transform: scale(1.05);
+        transform: scale(1.02);
     }
 }
 
-// Gradientes avanzados
+// Nuevo efecto hover profesional
+.hover-neon-subtle {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 
+            0 8px 25px rgba(59, 130, 246, 0.1),
+            0 0 0 1px rgba(139, 92, 246, 0.2);
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: $primary-gradient;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+// Gradientes profesionales con nueva paleta
 .gradient-text-animated {
-    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
     background-size: 300% 300%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -304,7 +349,7 @@ $neon-purple: #8b5cf6;
 
 .gradient-border-animated {
     position: relative;
-    background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+    background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
     background-size: 300% 300%;
     animation: gradient-shift 4s ease infinite;
     padding: 2px;
@@ -320,42 +365,80 @@ $neon-purple: #8b5cf6;
     }
 }
 
+// Nuevos gradientes específicos para el tema
+.blue-purple-gradient-text {
+    background: linear-gradient(135deg, $primary-blue, $primary-purple);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.silver-blue-gradient-text {
+    background: linear-gradient(135deg, #94A3B8, $primary-blue);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .neon-glow {
     box-shadow:
-        0 0 5px $neon-blue,
-        0 0 10px $neon-blue,
-        0 0 15px $neon-blue,
-        0 0 20px $neon-blue;
+        0 0 5px $neon-glow-blue,
+        0 0 10px $neon-glow-blue,
+        0 0 15px $neon-glow-purple;
 }
 
 .neon-text {
     color: $neon-blue;
     text-shadow:
-        0 0 5px $neon-blue,
-        0 0 10px $neon-blue,
-        0 0 15px $neon-blue;
+        0 0 5px $neon-glow-blue,
+        0 0 10px $neon-glow-blue;
 }
 
-// Efectos de glass morphism mejorados
+// Efectos neon sutiles para elementos profesionales
+.neon-subtle {
+    box-shadow: 0 0 10px $neon-glow-blue;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 0 20px $neon-glow-purple;
+    }
+}
+
+// Efectos de glass morphism profesionales
 .glass-morphism {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
 }
 
 .glass-morphism-dark {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .glass-morphism-colored {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05));
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(102, 126, 234, 0.3);
-    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+}
+
+// Nuevo efecto glass para el header
+.glass-card-dark {
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-card-light {
+    background: rgba(249, 250, 251, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
 }
 
 // Efectos de partículas y brillo
@@ -501,14 +584,14 @@ $neon-purple: #8b5cf6;
 // EFECTOS ESPECÍFICOS MEJORADOS PARA EL PORTFOLIO
 .portfolio-hero {
     .hero-title {
-        background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
         background-size: 300% 300%;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: gradient-shift 6s ease infinite, fade-zoom-in 2s cubic-bezier(0.34, 1.56, 0.64, 1);
         animation-fill-mode: both;
-        filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.4));
+        filter: drop-shadow(0 0 20px $neon-glow-blue);
     }
 
     .hero-avatar {
@@ -518,7 +601,7 @@ $neon-purple: #8b5cf6;
             content: '';
             position: absolute;
             inset: -4px;
-            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
             background-size: 300% 300%;
             animation: gradient-shift 4s ease infinite;
             border-radius: 50%;
@@ -528,7 +611,7 @@ $neon-purple: #8b5cf6;
 }
 
 .project-card {
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 
@@ -539,13 +622,13 @@ $neon-purple: #8b5cf6;
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-        transition: left 0.8s;
+        background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+        transition: left 0.6s;
     }
 
     &:hover {
-        transform: translateY(-15px) scale(1.03);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
 
         &::before {
             left: 100%;
@@ -554,14 +637,14 @@ $neon-purple: #8b5cf6;
 }
 
 .skill-badge {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 
     &:hover {
-        transform: scale(1.15) rotate(2deg);
-        background: linear-gradient(45deg, #667eea, #764ba2);
+        transform: scale(1.1) rotate(1deg);
+        background: $primary-gradient;
         color: white;
-        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        box-shadow: 0 8px 20px $neon-glow-blue;
     }
 }
 
@@ -570,4 +653,31 @@ $neon-purple: #8b5cf6;
     animation: gradient-text-reveal 2s cubic-bezier(0.34, 1.56, 0.64, 1);
     animation-fill-mode: both;
     animation-delay: 0.5s;
+}
+
+// Nuevos efectos para botones profesionales
+.btn-primary-gradient {
+    background: $primary-gradient;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $secondary-gradient;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px $neon-glow-blue;
+    }
+}
+
+.btn-neon-outline {
+    background: transparent;
+    border: 2px solid $primary-blue;
+    color: $primary-blue;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $primary-blue;
+        color: white;
+        box-shadow: 0 0 20px $neon-glow-blue;
+    }
 }

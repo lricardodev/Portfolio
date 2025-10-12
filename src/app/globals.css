@@ -5,7 +5,9 @@
 @layer base {
   :root {
 
-    --background: 0 0% 100%;
+    --background-light: 249 250 251; /* gray-50 */
+    --background-dark: 23 23 23;
+    /* --background: 0 0% 100%; */
 
     --foreground: 0 0% 3.9%;
 
@@ -117,6 +119,11 @@
     @apply bg-background text-foreground;
   }
 }
+.dot-background {
+  background-color: hsl(var(--background));
+  background-image: radial-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
 
 @layer components {
   /* Efectos translúcidos para glass morphism - Más transparentes */
@@ -169,4 +176,16 @@
 html {
   scroll-behavior: smooth; /* Opcional, para que todos los scrolls sean suaves */
   scroll-padding-top: 120px; /* ¡Esta es la línea clave! Ajusta el valor si es necesario. */
+}
+/* Portfolio background images */
+.portfolio-background {
+  background-image: url('/whiteImage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.dark .portfolio-background {
+  background-image: url('/darkImage.jpg');
 }
