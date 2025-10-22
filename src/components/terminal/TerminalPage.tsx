@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ThemeName } from "./types";
 import { THEMES, nextTheme } from "./commands";
-import { Eratostenes } from "./Algorithms/Eratostenes"
+import { Eratostenes } from "./algorithms/Eratostenes"
 
 import "./TerminalPage.css";
 

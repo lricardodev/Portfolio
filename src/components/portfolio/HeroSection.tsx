@@ -1,257 +1,256 @@
 // components/portfolio/HeroSection.tsx
-import React from 'react';
-import { TypeAnimation } from 'react-type-animation';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { Download, ArrowRight, Sparkles } from 'lucide-react';
+import React from "react";
+import { motion, Variants } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Download, Github, Linkedin, Youtube, Twitter } from "lucide-react";
+import Image from "next/image";
 
-// Variantes de animación mejoradas - Más exageradas y lentas
-const containerVariants = {
+// Variantes de animación para el nuevo diseño
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.4,
-      delayChildren: 0.8,
-      duration: 1.5
-    }
-  }
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+      duration: 0.8,
+    },
+  },
 };
 
-const itemVariants = {
-  hidden: { y: 100, opacity: 0, scale: 0.8, rotateX: -20 },
+const itemVariants: Variants = {
+  hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    scale: 1,
-    rotateX: 0,
     transition: {
-      type: 'spring',
-      stiffness: 50,
+      type: "spring",
+      stiffness: 100,
       damping: 12,
-      duration: 2
-    }
-  }
+      duration: 0.8,
+    },
+  },
 };
 
-const titleVariants = {
-  hidden: { y: 150, opacity: 0, scale: 0.5, rotateY: -30 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    rotateY: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 40,
-      damping: 10,
-      duration: 2.5
-    }
-  }
-};
-
-const sparkleVariants = {
-  hidden: { scale: 0, rotate: -360, opacity: 0 },
+const imageVariants: Variants = {
+  hidden: { scale: 0.8, opacity: 0 },
   visible: {
     scale: 1,
-    rotate: 0,
     opacity: 1,
     transition: {
-      delay: 1,
-      duration: 2,
-      type: 'spring',
-      stiffness: 100
-    }
-  }
-};
-
-const statsVariants = {
-  hidden: { y: 80, opacity: 0, scale: 0.8 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 60,
+      type: "spring",
+      stiffness: 100,
       damping: 12,
-      duration: 1.8
-    }
-  }
+      duration: 1,
+    },
+  },
 };
 
 export const HeroSection = () => (
   <motion.section
     id="about"
-    className="min-h-[80vh] flex flex-col justify-center space-y-8 relative"
     variants={containerVariants}
     initial="hidden"
     animate="visible"
   >
-    {/* Elementos decorativos */}
-    <div className="absolute top-10 right-10 opacity-20">
+    {/* Main Content Container */}
+    <div className="flex flex-col lg:flex-row items-center justify-evenly max-w-7xl mx-auto gap-8 lg:gap-16">
+      {/* Left Content */}
+      <motion.div variants={itemVariants} className="flex-1 space-y-8">
+        {/* Software Developer Label */}
+        <div>
+          <span className="text-lg font-medium text-gray-300 tracking-wide">
+            Software Developer
+          </span>
+        </div>
+
+        {/* Main Title */}
+        <div className="space-y-2">
+          <h1 className="text-6xl lg:text-8xl font-bold leading-tight">
+            <span className="block text-white">Hello I'm</span>
+            <span className="block text-kick-green">RichardDev</span>
+          </h1>
+        </div>
+
+        {/* Description */}
+        <div className="max-w-lg">
+          <p className="text-lg text-gray-300 leading-relaxed">
+            Passionate about creating efficient and engaging digital solutions.
+            Specializing in the JavaScript ecosystem, building interactive
+            interfaces with React and robust services with Node.js.
+          </p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button
+            size="lg"
+            className="bg-transparent border-2 border-kick-green text-kick-green hover:bg-kick-green hover:text-gray-900 px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-3"
+          >
+            <Download className="h-5 w-5" />
+            DOWNLOAD CV
+          </Button>
+
+          {/* Social Media Icons */}
+          <div className="flex gap-4 items-center">
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
+            >
+              <Github className="h-6 w-6 text-gray-900" />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
+            >
+              <Linkedin className="h-6 w-6 text-gray-900" />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
+            >
+              <Youtube className="h-6 w-6 text-gray-900" />
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
+            >
+              <Twitter className="h-6 w-6 text-gray-900" />
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Right Image */}
       <motion.div
-        variants={sparkleVariants}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        whileHover={{ scale: 1.5, rotate: 180 }}
+        variants={imageVariants}
+        className="flex-1 flex justify-center"
       >
-        <Sparkles className="w-8 h-8 text-blue-500" />
+        <div className="relative">
+          {/* Dashed Circle Outline */}
+          <div className="absolute inset-0 w-80 h-80 border-2 border-dashed border-kick-green rounded-full animate-spin-slow"></div>
+
+          {/* Profile Image */}
+          <div className="relative w-72 h-72 rounded-full overflow-hidden">
+            <Image
+              src="/src.jpg"
+              alt="profile"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
       </motion.div>
     </div>
 
-    {/* Elementos decorativos adicionales */}
-    <motion.div 
-      className="absolute top-20 left-10 opacity-10"
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ delay: 2, duration: 2, type: 'spring' }}
-    >
-      <Sparkles className="w-6 h-6 text-purple-500" />
-    </motion.div>
-
-    <motion.div 
-      className="absolute bottom-20 right-20 opacity-15"
-      initial={{ scale: 0, rotate: 180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ delay: 3, duration: 2, type: 'spring' }}
-    >
-      <Sparkles className="w-4 h-4 text-blue-400" />
-    </motion.div>
-
-    {/* Título principal */}
-    <motion.div variants={titleVariants} className="space-y-4">
-      <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight">
-        <span className="block text-slate-900 dark:text-slate-100">
-          Creador de
-        </span>
-        <span className="block hero-title gradient-text-animated">
-          Experiencias Digitales
-        </span>
-      </h1>
-    </motion.div>
-
-    {/* Subtítulo con animación de escritura */}
-    <motion.div variants={itemVariants} className="space-y-2">
-      <div className="text-2xl md:text-3xl lg:text-4xl text-slate-600 dark:text-slate-300">
-        <span className="block mb-2">Soy un </span>
-        <TypeAnimation
-          sequence={[
-            'Desarrollador Web.', 2000,
-            'Creador de Soluciones.', 2000,
-            'Apasionado por React.', 2000,
-            'Especialista en UX/UI.', 2000,
-          ]}
-          wrapper="span"
-          speed={50}
-          className="text-blue-600 dark:text-blue-400 font-semibold"
-          repeat={Infinity}
-        />
-      </div>
-    </motion.div>
-
-    {/* Descripción */}
-    <motion.div variants={itemVariants} className="max-w-3xl">
-      <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
-        Transformo ideas en productos funcionales y escalables, buscando siempre aprender y aplicar las mejores prácticas y las últimas tecnologías del ecosistema JavaScript.
-      </p>
-    </motion.div>
-
-    {/* Botones de acción */}
-    <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-4">
-      <Button 
-        size="lg" 
-        className="btn-primary-gradient hover-lift text-lg px-8 py-6"
-      >
-        <Download className="mr-3 h-5 w-5" />
-        Descargar CV
-      </Button>
-      
-      <Button 
-        variant="outline" 
-        size="lg" 
-        className="btn-neon-outline hover-lift text-lg px-8 py-6"
-      >
-        Ver Proyectos
-        <ArrowRight className="ml-3 h-5 w-5" />
-      </Button>
-    </motion.div>
-
-    {/* Indicadores de scroll */}
-    <motion.div 
+    {/* Statistics Bar */}
+    <motion.div
       variants={itemVariants}
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 mt-8 border-t border-slate-200 dark:border-slate-700"
     >
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="w-6 h-10 border-2 border-blue-500 rounded-full flex justify-center"
-      >
-        <motion.div
-          animate={{ y: [0, 12, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="w-1 h-3 bg-blue-500 rounded-full mt-2"
-        />
-      </motion.div>
-    </motion.div>
-
-    {/* Estadísticas rápidas */}
-    <motion.div 
-      variants={statsVariants}
-      className="grid grid-cols-3 gap-8 pt-16 border-t border-slate-200 dark:border-slate-700"
-    >
-      <motion.div 
-        className="text-center"
+        className="text-center space-y-2"
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
-        transition={{ delay: 4, duration: 1.5, type: 'spring' }}
+        transition={{ delay: 1.5, duration: 0.8, type: "spring" }}
         whileHover={{ scale: 1.1, y: -5 }}
       >
-        <motion.div 
-          className="text-3xl font-bold text-blue-600 dark:text-blue-400"
+        <motion.div
+          className="text-3xl md:text-4xl font-bold"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ delay: 4.5, duration: 1, type: 'spring', stiffness: 200 }}
+          transition={{
+            delay: 1.7,
+            duration: 0.6,
+            type: "spring",
+            stiffness: 200,
+          }}
+        >
+          25+
+        </motion.div>
+        <div className="text-sm text-slate-600 dark:text-slate-400">
+          Tecnologías
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="text-center space-y-2"
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 1.6, duration: 0.8, type: "spring" }}
+        whileHover={{ scale: 1.1, y: -5 }}
+      >
+        <motion.div
+          className="text-3xl md:text-4xl font-bold"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{
+            delay: 1.8,
+            duration: 0.6,
+            type: "spring",
+            stiffness: 200,
+          }}
         >
           3+
         </motion.div>
-        <div className="text-sm text-slate-600 dark:text-slate-300">Años de experiencia</div>
+        <div className="text-sm text-slate-600 dark:text-slate-400">
+          Años de experiencia
+        </div>
       </motion.div>
-      
-      <motion.div 
-        className="text-center"
+
+      <motion.div
+        className="text-center space-y-2"
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
-        transition={{ delay: 4.2, duration: 1.5, type: 'spring' }}
+        transition={{ delay: 1.7, duration: 0.8, type: "spring" }}
         whileHover={{ scale: 1.1, y: -5 }}
       >
-        <motion.div 
-          className="text-3xl font-bold text-purple-600 dark:text-purple-400"
+        <motion.div
+          className="text-3xl md:text-4xl font-bold"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ delay: 4.7, duration: 1, type: 'spring', stiffness: 200 }}
+          transition={{
+            delay: 1.9,
+            duration: 0.6,
+            type: "spring",
+            stiffness: 200,
+          }}
         >
           50+
         </motion.div>
-        <div className="text-sm text-slate-600 dark:text-slate-300">Proyectos completados</div>
+        <div className="text-sm text-slate-600 dark:text-slate-400">
+          Proyectos completados
+        </div>
       </motion.div>
-      
-      <motion.div 
-        className="text-center"
+
+      <motion.div
+        className="text-center space-y-2"
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
-        transition={{ delay: 4.4, duration: 1.5, type: 'spring' }}
+        transition={{ delay: 1.8, duration: 0.8, type: "spring" }}
         whileHover={{ scale: 1.1, y: -5 }}
       >
-        <motion.div 
-          className="text-3xl font-bold text-blue-600 dark:text-blue-400"
+        <motion.div
+          className="text-3xl md:text-4xl font-bold"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ delay: 4.9, duration: 1, type: 'spring', stiffness: 200 }}
+          transition={{
+            delay: 2,
+            duration: 0.6,
+            type: "spring",
+            stiffness: 200,
+          }}
         >
-          100%
+          500+
         </motion.div>
-        <div className="text-sm text-slate-600 dark:text-slate-300">Satisfacción del cliente</div>
+        <div className="text-sm text-slate-600 dark:text-slate-400">
+          Commits de código
+        </div>
       </motion.div>
     </motion.div>
   </motion.section>

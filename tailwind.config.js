@@ -51,6 +51,13 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
+  			},
+  			// Colores personalizados para el tema verde
+  			'kick-green': {
+  				DEFAULT: '#05FD9B',
+  				light: '#4DFFB8',
+  				dark: '#04C77A',
+  				accent: '#03A062'
   			}
   		}
   	}

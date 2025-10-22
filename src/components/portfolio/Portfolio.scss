@@ -1,15 +1,15 @@
 // Portfolio SCSS - Diseño minimalista profesional con efectos neon sutiles
 
-// Variables para colores y efectos - Paleta azul-morado profesional
-$primary-blue: #3B82F6;
-$primary-blue-light: #60A5FA;
-$primary-purple: #8B5CF6;
-$primary-purple-light: #A78BFA;
+// Variables para colores y efectos - Paleta verde profesional estilo Kick
+$primary-green: #05FD9B;
+$primary-green-light: #4DFFB8;
+$primary-green-dark: #04C77A;
+$primary-green-accent: #03A062;
 
 // Gradientes principales
-$primary-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
-$secondary-gradient: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%);
-$accent-gradient: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #A78BFA 100%);
+$primary-gradient: linear-gradient(135deg, #05FD9B 0%, #04C77A 100%);
+$secondary-gradient: linear-gradient(135deg, #4DFFB8 0%, #05FD9B 100%);
+$accent-gradient: linear-gradient(135deg, #05FD9B 0%, #04C77A 50%, #03A062 100%);
 
 // Fondos
 $bg-light: #F9FAFB;
@@ -18,10 +18,10 @@ $bg-dark: #111827;
 $bg-dark-secondary: #1E1B4B;
 
 // Efectos neon sutiles
-$neon-blue: #3B82F6;
-$neon-purple: #8B5CF6;
-$neon-glow-blue: rgba(59, 130, 246, 0.3);
-$neon-glow-purple: rgba(139, 92, 246, 0.3);
+$neon-green: #05FD9B;
+$neon-green-dark: #04C77A;
+$neon-glow-green: rgba(5, 253, 155, 0.3);
+$neon-glow-green-dark: rgba(4, 199, 122, 0.3);
 
 // Keyframes para animaciones
 @keyframes float {
@@ -40,12 +40,12 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 
     0%,
     100% {
-        box-shadow: 0 0 15px $neon-glow-blue;
+        box-shadow: 0 0 15px $neon-glow-green;
         transform: scale(1);
     }
 
     50% {
-        box-shadow: 0 0 25px $neon-glow-purple;
+        box-shadow: 0 0 25px $neon-glow-green-dark;
         transform: scale(1.02);
     }
 }
@@ -315,8 +315,8 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
     &:hover {
         transform: translateY(-2px);
         box-shadow: 
-            0 8px 25px rgba(59, 130, 246, 0.1),
-            0 0 0 1px rgba(139, 92, 246, 0.2);
+            0 8px 25px rgba(5, 253, 155, 0.1),
+            0 0 0 1px rgba(4, 199, 122, 0.2);
     }
 
     &::before {
@@ -339,7 +339,7 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 
 // Gradientes profesionales con nueva paleta
 .gradient-text-animated {
-    background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
+    background: linear-gradient(45deg, $primary-green, $primary-green-dark, $primary-green-light, $primary-green-accent);
     background-size: 300% 300%;
     background-clip: text;
     -webkit-background-clip: text;
@@ -349,7 +349,7 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 
 .gradient-border-animated {
     position: relative;
-    background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
+    background: linear-gradient(45deg, $primary-green, $primary-green-dark, $primary-green-light, $primary-green-accent);
     background-size: 300% 300%;
     animation: gradient-shift 4s ease infinite;
     padding: 2px;
@@ -366,15 +366,15 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 }
 
 // Nuevos gradientes específicos para el tema
-.blue-purple-gradient-text {
-    background: linear-gradient(135deg, $primary-blue, $primary-purple);
+.green-gradient-text {
+    background: linear-gradient(135deg, $primary-green, $primary-green-dark);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.silver-blue-gradient-text {
-    background: linear-gradient(135deg, #94A3B8, $primary-blue);
+.silver-green-gradient-text {
+    background: linear-gradient(135deg, #94A3B8, $primary-green);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -388,10 +388,10 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 }
 
 .neon-text {
-    color: $neon-blue;
+    color: $neon-green;
     text-shadow:
-        0 0 5px $neon-glow-blue,
-        0 0 10px $neon-glow-blue;
+        0 0 5px $neon-glow-green,
+        0 0 10px $neon-glow-green;
 }
 
 // Efectos neon sutiles para elementos profesionales
@@ -489,7 +489,7 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 // Efectos de typing
 .typing-effect {
     overflow: hidden;
-    border-right: 2px solid $neon-blue;
+    border-right: 2px solid $neon-green;
     white-space: nowrap;
     animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
 }
@@ -512,7 +512,7 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
     }
 
     50% {
-        border-color: $neon-blue;
+        border-color: $neon-green;
     }
 }
 
@@ -584,14 +584,14 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 // EFECTOS ESPECÍFICOS MEJORADOS PARA EL PORTFOLIO
 .portfolio-hero {
     .hero-title {
-        background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
+        background: linear-gradient(45deg, $primary-green, $primary-green-dark, $primary-green-light, $primary-green-accent);
         background-size: 300% 300%;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: gradient-shift 6s ease infinite, fade-zoom-in 2s cubic-bezier(0.34, 1.56, 0.64, 1);
         animation-fill-mode: both;
-        filter: drop-shadow(0 0 20px $neon-glow-blue);
+        filter: drop-shadow(0 0 20px $neon-glow-green);
     }
 
     .hero-avatar {
@@ -601,7 +601,7 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
             content: '';
             position: absolute;
             inset: -4px;
-            background: linear-gradient(45deg, $primary-blue, $primary-purple, $primary-blue-light, $primary-purple-light);
+            background: linear-gradient(45deg, $primary-green, $primary-green-dark, $primary-green-light, $primary-green-accent);
             background-size: 300% 300%;
             animation: gradient-shift 4s ease infinite;
             border-radius: 50%;
@@ -671,13 +671,13 @@ $neon-glow-purple: rgba(139, 92, 246, 0.3);
 
 .btn-neon-outline {
     background: transparent;
-    border: 2px solid $primary-blue;
-    color: $primary-blue;
+    border: 2px solid $primary-green;
+    color: $primary-green;
     transition: all 0.3s ease;
 
     &:hover {
-        background: $primary-blue;
+        background: $primary-green;
         color: white;
-        box-shadow: 0 0 20px $neon-glow-blue;
+        box-shadow: 0 0 20px $neon-glow-green;
     }
 }
