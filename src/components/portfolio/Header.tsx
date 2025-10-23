@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sun, Moon, Menu, X } from "lucide-react";
+// Se añade 'Sparkles'
+import { Sun, Moon, Menu, X, Sparkles } from "lucide-react"; 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { useThreeBackground } from "@/components/three/ThreeBackgroundProvider";
 
 const NAV_ITEMS = [
   { name: "Sobre mí", sectionId: "about" },
@@ -15,10 +17,19 @@ const NAV_ITEMS = [
   { name: "Contacto", sectionId: "contact" },
 ];
 
+const EFFECTS = [
+  { type: "particles", emoji: "✨" },
+  { type: "geometries", emoji: "🔷" },
+  { type: "waves", emoji: "🌊" },
+];
+
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // 3D Effects context
+  const { currentType, setCurrentType } = useThreeBackground();
 
   // Manejar scroll
   useEffect(() => {
@@ -26,6 +37,13 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Función para ciclar entre efectos 3D
+  const cycleToNextEffect = () => {
+    const currentIndex = EFFECTS.findIndex(effect => effect.type === currentType);
+    const nextIndex = (currentIndex + 1) % EFFECTS.length;
+    setCurrentType(EFFECTS[nextIndex].type as 'particles' | 'geometries' | 'waves');
+  };
 
   // Inicializar tema
   useEffect(() => {
@@ -80,6 +98,38 @@ export function Header() {
       ))}
     </ul>
   );
+
+  // --- EffectsSelector Modificado ---
+  const EffectsSelector = () => {
+    const currentEffect = EFFECTS.find(effect => effect.type === currentType);
+    
+    return (
+      <motion.div
+        initial={{ scale: 0, rotate: -90 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 1.3, duration: 1, type: "spring" }}
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={cycleToNextEffect}
+          className="hover-neon-subtle relative group"
+          title={`Cambiar efecto 3D (${currentEffect?.name})`}
+        >
+          {/* Icono estático 'Sparkles' */}
+          <Sparkles className="h-[1.2rem] w-[1.2rem]" />
+          
+          {/* Tooltip */}
+          <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap z-50">
+            {currentEffect?.name}
+          </div>
+        </Button>
+      </motion.div>
+    );
+  };
+  // --- Fin de la modificación ---
 
   return (
     <motion.header
@@ -143,7 +193,7 @@ export function Header() {
 
               {/* Navegación Desktop */}
               <motion.div
-                className="hidden md:flex md:items-center md:space-x-8"
+                className="hidden md:flex md:items-center md:space-x-4"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1, duration: 1.2, type: "spring" }}
@@ -152,7 +202,10 @@ export function Header() {
                   <NavList />
                 </nav>
 
-                {/* Theme Toggle (Corregido) */}
+                {/* 3D Effects Selector */}
+                <EffectsSelector />
+
+                {/* Theme Toggle */}
                 <motion.div
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
@@ -166,7 +219,6 @@ export function Header() {
                     onClick={toggleTheme}
                     className="hover-neon-subtle"
                   >
-                    {/* Ya no hay un motion.div extra aquí adentro */}
                     <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                     <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   </Button>
@@ -183,7 +235,7 @@ export function Header() {
                 <motion.div
                   initial={{ scale: 0, rotate: -90 }}
                   animate={{ scale: 1, rotate: 0 }}
-                  transition={{ delay: 1.8, duration: 1, type: "spring" }}
+                  transition={{ delay: 1.6, duration: 1, type: "spring" }}
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <Button
@@ -196,6 +248,8 @@ export function Header() {
                     <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   </Button>
                 </motion.div>
+
+                <EffectsSelector />
 
                 <motion.div
                   initial={{ scale: 0, rotate: 90 }}

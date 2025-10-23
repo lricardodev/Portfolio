@@ -50,7 +50,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-gradient-primary min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} min-h-screen`}>
         <Script
           id="theme-init"
           strategy="beforeInteractive"

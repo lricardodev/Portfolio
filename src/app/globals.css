@@ -127,20 +127,28 @@
   }
   
   body {
-    @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    background-color: var(--bg-primary);
+    background-color: white;
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
+  .dark body {
+    background-color: #04060D;
+      /* #1C1B22 */
+  /* #0A0F0D */
+  /* #111827 */
+  /* #0B1E1A */
+  /* #1A1A1A */
+  }
 }
 .dot-background {
-  background-color: hsl(var(--background));
-  background-image: radial-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 0);
-  background-size: 20px 20px;
+  /* background-color: hsl(var(--background)); */ /* Disabled for Three.js */
+  /* background-image: radial-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 0); */ /* Disabled for Three.js */
+  /* background-size: 20px 20px; */ /* Disabled for Three.js */
 }
 
 @layer components {
@@ -287,17 +295,17 @@ html {
 .dark {
   scrollbar-color: #05FD9B #090B10; /* Tema oscuro */
 }
-/* Portfolio background images */
+/* Portfolio background images - Disabled for Three.js compatibility */
 .portfolio-background {
-  background-color: white;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-color: white; */
+  /* background-size: cover; */
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
 }
 
 .dark .portfolio-background {
-  background-color: #111827;
+  /* background-color: #111827; */
   /* #1C1B22 */
   /* #0A0F0D */
   /* #111827 */
