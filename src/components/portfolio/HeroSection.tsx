@@ -106,12 +106,12 @@ const SocialIcon = memo(({ icon: Icon, label, href }: SocialIconProps) => (
     href={href}
     whileHover={{ scale: 1.1 }}
     whileTap={{ scale: 0.95 }}
-    className="w-12 h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
+    className="w-10 h-10 sm:w-12 sm:h-12 bg-kick-green rounded-full flex items-center justify-center cursor-pointer hover:bg-kick-green-light transition-colors duration-300"
     aria-label={label}
     target="_blank"
     rel="noopener noreferrer"
   >
-    <Icon className="h-6 w-6 text-gray-900" />
+    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-gray-900" />
   </motion.a>
 ));
 
@@ -137,24 +137,83 @@ StatisticCard.displayName = "StatisticCard";
 const ProfileImage = memo(() => (
   <motion.div variants={imageVariants} className="flex-1 flex justify-center">
     <div className="relative">
-      {/* Dashed Circle Outline */}
-      <div className="absolute inset-0 w-80 h-80 border-2 border-dashed border-kick-green rounded-full animate-spin-slow" />
+      {/* Hexagonal Border with Gradient */}
+      <div className="absolute inset-0 w-80 h-80">
+        <svg className="w-full h-full" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              id="hexGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="#00ff00" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#00ff88" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#00ff00" stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <motion.polygon
+            points="50,5 85,25 85,75 50,95 15,75 15,25"
+            fill="none"
+            stroke="url(#hexGradient)"
+            strokeWidth="2"
+            animate={{
+              strokeDasharray: ["0 100", "100 0", "0 100"],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </svg>
+      </div>
 
-      {/* Profile Image */}
-      <div className="relative w-72 h-72 rounded-full overflow-hidden">
-        <Image
-          src="/src.jpg"
-          alt="RichardDev - Software Developer"
-          fill
-          className="object-cover"
-          priority
-          sizes="(max-width: 768px) 288px, 288px"
-        />
+      {/* Floating Code Snippets */}
+      <div className="absolute inset-0 w-80 h-80">
+        {["<React/>", "JS", "TS", "CSS"].map((text, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-xs font-mono text-kick-green opacity-60"
+            style={{
+              left: `${20 + i * 20}%`,
+              top: `${30 + i * 15}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.6, 1, 0.6],
+              rotate: [0, 5, 0],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.8,
+            }}
+          >
+            {text}
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Hexagonal Profile Image */}
+      <div className="relative w-64 h-64">
+        <div className="w-full h-full bg-gradient-to-br from-kick-green/20 to-transparent rounded-full p-1">
+          <div className="w-full h-full rounded-full overflow-hidden shadow-2xl shadow-kick-green/30">
+            <Image
+              src="/pofile.jpg"
+              alt="RichardDev - Software Developer"
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 640px) 256px, 256px"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </motion.div>
 ));
-
 ProfileImage.displayName = "ProfileImage";
 
 const HeroContent = memo(() => (
@@ -176,7 +235,7 @@ const HeroContent = memo(() => (
 
     {/* Description */}
     <div className="max-w-lg">
-      <p className="text-lg text-gray-300 leading-relaxed">
+      <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
         Passionate about creating efficient and engaging digital solutions.
         Specializing in the JavaScript ecosystem, building interactive
         interfaces with React and robust services with Node.js.
@@ -187,16 +246,16 @@ const HeroContent = memo(() => (
     <div className="flex flex-col sm:flex-row gap-4">
       <Button
         size="lg"
-        className="bg-transparent border-2 border-kick-green text-kick-green hover:bg-kick-green hover:text-gray-900 px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-3"
+        className="bg-transparent border-2 border-kick-green text-kick-green hover:bg-kick-green hover:text-gray-900 px-6 sm:px-8 py-3 rounded-lg font-medium transition-all duration-300 flex items-center gap-3 text-sm sm:text-base"
         aria-label="Download CV"
       >
-        <Download className="h-5 w-5" />
+        <Download className="h-4 w-4 sm:h-5 sm:w-5" />
         DOWNLOAD CV
       </Button>
 
       {/* Social Media Icons */}
       <div
-        className="flex gap-4 items-center"
+        className="flex gap-3 sm:gap-4 items-center justify-center sm:justify-start"
         role="list"
         aria-label="Social media links"
       >
@@ -218,7 +277,7 @@ HeroContent.displayName = "HeroContent";
 const StatisticsBar = memo(() => (
   <motion.div
     variants={itemVariants}
-    className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-8 mt-8 border-t border-slate-200 dark:border-slate-700"
+    className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-slate-200 dark:border-slate-700"
     role="region"
     aria-label="Statistics"
   >
@@ -245,7 +304,7 @@ export const HeroSection = memo(() => (
     aria-labelledby="hero-heading"
   >
     {/* Main Content Container */}
-    <div className="flex flex-col lg:flex-row items-center justify-evenly max-w-7xl mx-auto gap-8 lg:gap-16">
+    <div className="flex flex-col lg:flex-row items-center justify-evenly max-w-7xl mx-auto gap-6 sm:gap-8 lg:gap-16 px-4 sm:px-6 lg:px-8">
       <HeroContent />
       <ProfileImage />
     </div>

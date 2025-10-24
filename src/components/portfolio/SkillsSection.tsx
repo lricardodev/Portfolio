@@ -218,16 +218,16 @@ const getSkillColor = (level: number): string => {
 const SectionHeader = memo(() => (
   <motion.div
     variants={ANIMATION_VARIANTS.category}
-    className="text-center space-y-4"
+    className="text-center space-y-3 sm:space-y-4"
   >
-    <div className="flex items-center justify-center space-x-3 mb-4">
-      <Code2 className="w-8 h-8 text-kick-green" />
-      <h2 className="text-4xl md:text-5xl font-bold green-gradient-text">
+    <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+      <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-kick-green" />
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold green-gradient-text">
         Technologies and Skills
       </h2>
-      <Wrench className="w-8 h-8 text-kick-green-dark" />
+      <Wrench className="w-6 h-6 sm:w-8 sm:h-8 text-kick-green-dark" />
     </div>
-    <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+    <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto px-4">
       My technology stack and tools I use to create innovative digital
       solutions.
     </p>
@@ -300,16 +300,16 @@ SkillCard.displayName = "SkillCard";
 // Category header component
 const CategoryHeader = memo(
   ({ category, Icon }: { category: SkillCategory; Icon: LucideIcon }) => (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-2 sm:space-x-3">
       <motion.div
-        className="p-2 rounded-lg bg-gradient-to-br from-kick-green to-kick-green-dark"
+        className="p-1.5 sm:p-2 rounded-lg bg-gradient-to-br from-kick-green to-kick-green-dark"
         variants={ANIMATION_VARIANTS.icon}
         whileHover={{ scale: 1.2, rotate: 10 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
-        <Icon className="w-6 h-6 text-white" />
+        <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
       </motion.div>
-      <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">
+      <h3 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-200">
         {category}
       </h3>
     </div>
@@ -323,10 +323,10 @@ const CategorySection = memo(({ category, skills }: CategorySectionProps) => {
   const Icon = CATEGORY_ICONS[category];
 
   return (
-    <motion.div variants={ANIMATION_VARIANTS.category} className="space-y-6">
+    <motion.div variants={ANIMATION_VARIANTS.category} className="space-y-4 sm:space-y-6">
       <CategoryHeader category={category} Icon={Icon} />
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
         <TooltipProvider delayDuration={100}>
           {skills.map((skill, index) => (
             <SkillCard key={skill.name} {...skill} index={index} />
@@ -346,7 +346,7 @@ export const SkillsSection = () => {
   return (
     <motion.section
       id="skills"
-      className="space-y-12"
+      className="space-y-8 sm:space-y-12 px-4 sm:px-6 lg:px-8"
       variants={ANIMATION_VARIANTS.container}
       initial="hidden"
       whileInView="visible"
@@ -354,7 +354,7 @@ export const SkillsSection = () => {
     >
       <SectionHeader />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {skillEntries.map(([category, skills]) => (
           <CategorySection key={category} category={category} skills={skills} />
         ))}

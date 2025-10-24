@@ -6,8 +6,8 @@ import { motion, useTime, useTransform, MotionValue } from 'framer-motion';
 // --- Parámetros de las Olas (ajusta aquí) ---
 const WAVE_COUNT = 15;   // Número de líneas
 const SEGMENTS = 100;    // Puntos por línea (más es más suave, pero más lento)
-const BASE_OPACITY = 0.2; // Opacidad máxima
-const STROKE_WIDTH = 1.0;  // Grosor de la línea
+const BASE_OPACITY = 0.3; // Opacidad máxima
+const STROKE_WIDTH = 1.5;  // Grosor de la línea
 // ---
 
 interface SimpleWavesFramerProps {

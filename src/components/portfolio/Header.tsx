@@ -190,14 +190,14 @@ const Logo = memo(() => (
     whileHover={{ scale: 1.1, rotate: 5 }}
     whileTap={{ scale: 0.95 }}
   >
-    <Link href="/" className="flex items-center space-x-2">
+    <Link href="/" className="flex items-center space-x-1 sm:space-x-2">
       <motion.div
-        className="w-8 h-8 rounded-full bg-gradient-to-br from-kick-green to-kick-green-dark flex items-center justify-center"
+        className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-kick-green to-kick-green-dark flex items-center justify-center"
         whileHover={{ rotate: 360 }}
         transition={{ duration: 0.6 }}
       >
         <motion.span
-          className="text-white font-bold text-sm"
+          className="text-white font-bold text-xs sm:text-sm"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
@@ -206,7 +206,7 @@ const Logo = memo(() => (
         </motion.span>
       </motion.div>
       <motion.span
-        className="text-lg font-bold green-gradient-text"
+        className="text-base sm:text-lg font-bold green-gradient-text"
         initial={{ x: -50, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 1 }}
@@ -297,7 +297,7 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       {...ANIMATION_VARIANTS.header}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -305,7 +305,7 @@ export function Header() {
         >
           <Card
             className={cn(
-              "p-4 transition-all duration-300",
+              "p-3 sm:p-4 transition-all duration-300",
               isDark ? "glass-card-dark" : "glass-card-light",
               isScrolled && "shadow-lg"
             )}
@@ -332,7 +332,7 @@ export function Header() {
 
               {/* Mobile Controls */}
               <motion.div
-                className="flex items-center space-x-2 md:hidden"
+                className="flex items-center space-x-1 sm:space-x-2 md:hidden"
                 initial={{ x: 50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 1.2, duration: 1, type: "spring" }}
@@ -354,7 +354,7 @@ export function Header() {
               {isMobileMenuOpen && (
                 <motion.nav
                   {...ANIMATION_VARIANTS.mobileMenu}
-                  className="md:hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-700"
+                  className="md:hidden mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-200 dark:border-slate-700"
                 >
                   <NavList isMobile onItemClick={handleSectionClick} />
                 </motion.nav>

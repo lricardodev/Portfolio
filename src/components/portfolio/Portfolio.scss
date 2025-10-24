@@ -103,6 +103,61 @@ $neon-glow-green: rgba(5, 253, 155, 0.3);
   box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
 }
 
+// Mobile-first responsive styles
+@media (max-width: 640px) {
+  // Enhanced touch targets for mobile
+  .hover-lift {
+    &:active {
+      transform: translateY(-4px) scale(1.02);
+    }
+  }
+
+  .hover-neon-subtle {
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  // Better spacing for mobile cards
+  .project-card {
+    margin-bottom: 1rem;
+    
+    &:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+  }
+
+  // Mobile-optimized skill badges
+  .skill-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    
+    &:active {
+      transform: scale(1.05) rotate(1deg);
+    }
+  }
+
+  // Mobile button optimizations
+  .btn-primary-gradient,
+  .btn-neon-outline {
+    min-height: 44px; // iOS touch target minimum
+    font-size: 0.875rem;
+    
+    &:active {
+      transform: translateY(-1px) scale(0.98);
+    }
+  }
+}
+
+// Tablet optimizations
+@media (min-width: 641px) and (max-width: 1024px) {
+  .project-card {
+    &:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+  }
+}
+
 // Responsive animations
 @media (prefers-reduced-motion: reduce) {
   * {

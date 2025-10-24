@@ -101,16 +101,16 @@ const ANIMATION_VARIANTS = {
 const SectionHeader = () => (
   <motion.div
     variants={ANIMATION_VARIANTS.section}
-    className="text-center space-y-4"
+    className="text-center space-y-3 sm:space-y-4"
   >
-    <div className="flex items-center justify-center space-x-3 mb-4">
-      <Code className="w-8 h-8 text-kick-green" />
-      <h2 className="text-4xl md:text-5xl font-bold green-gradient-text">
+    <div className="flex items-center justify-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
+      <Code className="w-6 h-6 sm:w-8 sm:h-8 text-kick-green" />
+      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold green-gradient-text">
         Featured Projects
       </h2>
-      <ExternalLink className="w-8 h-8 text-kick-green-dark" />
+      <ExternalLink className="w-6 h-6 sm:w-8 sm:h-8 text-kick-green-dark" />
     </div>
-    <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+    <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto px-4">
       A selection of my most recent projects demonstrating my expertise in
       modern web development.
     </p>
@@ -120,7 +120,7 @@ const SectionHeader = () => (
 // Project grid component
 const ProjectGrid = () => (
   <motion.div
-    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+    className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
     variants={ANIMATION_VARIANTS.container}
   >
     {PROJECTS.map((project, index) => (
@@ -154,7 +154,7 @@ export const ProjectSection = () => {
   return (
     <motion.section
       id="projects"
-      className="space-y-12"
+      className="space-y-8 sm:space-y-12 px-4 sm:px-6 lg:px-8"
       variants={ANIMATION_VARIANTS.container}
       initial="hidden"
       whileInView="visible"
