@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Variables Tailwind existentes */
+    /* Existing Tailwind variables */
     --background-light: 249 250 251; /* gray-50 */
     --background-dark: 23 23 23;
     --foreground: 0 0% 3.9%;
@@ -32,40 +32,40 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    /* Variables CSS personalizadas para tema claro/oscuro */
-    --primary-green: #05FD9B;
-    --primary-green-light: #4DFFB8;
-    --primary-green-dark: #04C77A;
-    --primary-green-accent: #03A062;
-    
-    /* Fondos tema claro */
-    --bg-primary: #F9FAFB;
-    --bg-secondary: #E5E7EB;
-    --bg-card: #FFFFFF;
+    /* Custom CSS variables for light/dark theme */
+    --primary-green: #05fd9b;
+    --primary-green-light: #4dffb8;
+    --primary-green-dark: #04c77a;
+    --primary-green-accent: #03a062;
+
+    /* Light theme backgrounds */
+    --bg-primary: #f9fafb;
+    --bg-secondary: #e5e7eb;
+    --bg-card: #ffffff;
     --bg-glass: rgba(255, 255, 255, 0.05);
-    
-    /* Textos tema claro */
+
+    /* Light theme texts */
     --text-primary: #111827;
-    --text-secondary: #6B7280;
-    --text-muted: #9CA3AF;
-    
-    /* Bordes tema claro */
-    --border-primary: #E5E7EB;
-    --border-secondary: #D1D5DB;
-    
-    /* Sombras tema claro */
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+
+    /* Light theme borders */
+    --border-primary: #e5e7eb;
+    --border-secondary: #d1d5db;
+
+    /* Light theme shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    
-    /* Efectos neon tema claro */
+
+    /* Light theme neon effects */
     --neon-green: rgba(5, 253, 155, 0.3);
     --neon-green-dark: rgba(4, 199, 122, 0.3);
   }
   .dark {
-    /* Variables Tailwind existentes */
-    --background: 220 15% 10%; 
+    /* Existing Tailwind variables */
+    --background: 220 15% 10%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -90,44 +90,43 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    /* Variables CSS personalizadas para tema oscuro */
-    /* Fondos tema oscuro */
+    /* Custom CSS variables for dark theme */
+    /* Dark theme backgrounds */
     --bg-primary: #111827;
-    --bg-secondary: #1E1B4B;
-    --bg-card: #1F2937;
+    --bg-secondary: #1e1b4b;
+    --bg-card: #1f2937;
     --bg-glass: rgba(0, 0, 0, 0.1);
-    
-    /* Textos tema oscuro */
-    --text-primary: #F9FAFB;
-    --text-secondary: #D1D5DB;
-    --text-muted: #9CA3AF;
-    
-    /* Bordes tema oscuro */
+
+    /* Dark theme texts */
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+
+    /* Dark theme borders */
     --border-primary: #374151;
-    --border-secondary: #4B5563;
-    
-    /* Sombras tema oscuro */
+    --border-secondary: #4b5563;
+
+    /* Dark theme shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
-    
-    /* Efectos neon tema oscuro */
+
+    /* Dark theme neon effects */
     --neon-green: rgba(5, 253, 155, 0.4);
     --neon-green-dark: rgba(4, 199, 122, 0.4);
   }
 }
-
-
 
 @layer base {
   * {
     @apply border-border;
     box-sizing: border-box;
   }
-  
+
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
     background-color: white;
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -135,112 +134,19 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
+
   .dark body {
-    background-color: #04060D;
-      /* #1C1B22 */
-  /* #0A0F0D */
-  /* #111827 */
-  /* #0B1E1A */
-  /* #1A1A1A */
+    background-color: #04060d;
+    /* #1C1B22 */
+    /* #0A0F0D */
+    /* #111827 */
+    /* #0B1E1A */
+    /* #1A1A1A */
   }
-}
-.dot-background {
-  /* background-color: hsl(var(--background)); */ /* Disabled for Three.js */
-  /* background-image: radial-gradient(hsl(var(--foreground) / 0.1) 1px, transparent 0); */ /* Disabled for Three.js */
-  /* background-size: 20px 20px; */ /* Disabled for Three.js */
 }
 
 @layer components {
-  /* Efectos translúcidos para glass morphism - Más transparentes */
-  .glass-effect {
-    @apply backdrop-blur-lg bg-white/5 border border-white/10;
-  }
-  
-  .glass-effect-dark {
-    @apply backdrop-blur-lg bg-black/5 border border-white/5;
-  }
-  
-  .glass-silver-blue {
-    @apply backdrop-blur-xl bg-slate-900/10 border border-slate-400/20;
-  }
-  
-  .glass-card {
-    @apply backdrop-blur-md bg-white/5 border border-white/10 shadow-lg;
-  }
-  
-  .glass-card-dark {
-    @apply backdrop-blur-md bg-black/5 border border-white/10 shadow-lg;
-  }
-  
-  /* Gradientes existentes mejorados con transparencia */
-  .dark-gradient-card {
-    @apply bg-gradient-to-br from-slate-900/60 to-slate-800/60 backdrop-blur-md border border-slate-600/30;
-  }
-  
-  .silver-blue-gradient-text {
-    @apply bg-gradient-to-r from-slate-300 to-blue-400 bg-clip-text text-transparent;
-  }
-  
-  .silver-blue-glow {
-    @apply shadow-lg shadow-blue-500/15;
-  }
-  .dark-blue-gradient-text {
-    @apply bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text text-transparent;
-  }
-  
-  /* Nuevas clases para el tema plateado y azul */
-  .glass-silver {
-    @apply backdrop-blur-xl bg-slate-800/10 border border-slate-300/20;
-  }
-  
-  .glass-blue {
-    @apply backdrop-blur-xl bg-blue-900/10 border border-blue-400/20;
-  }
-
-  /* Clases utilitarias personalizadas */
-  .text-gradient {
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .bg-gradient-primary {
-    background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
-  }
-
-  .bg-gradient-secondary {
-    background: linear-gradient(135deg, var(--primary-green-light), var(--primary-green-accent));
-  }
-
-  /* Efectos de glass morphism adicionales */
-  .glass {
-    background: var(--bg-glass);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(83, 252, 24, 0.2);
-    box-shadow: var(--shadow-lg);
-  }
-
-  /* Efectos neon sutiles */
-  .neon-border {
-    border: 1px solid var(--neon-green);
-    box-shadow: 0 0 10px var(--neon-green);
-  }
-
-  .neon-border-green {
-    border: 1px solid var(--neon-green-dark);
-    box-shadow: 0 0 10px var(--neon-green-dark);
-  }
-
-  /* Efectos de hover mejorados */
+  /* Improved hover effects */
   .hover-lift {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -249,68 +155,43 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
   }
-
-  .hover-glow {
-    transition: all 0.3s ease;
-  }
-
-  .hover-glow:hover {
-    box-shadow: 0 0 20px var(--neon-green);
-  }
 }
 
 html {
-  scroll-behavior: smooth; /* Opcional, para que todos los scrolls sean suaves */
-  scroll-padding-top: 120px; /* ¡Esta es la línea clave! Ajusta el valor si es necesario. */
+  scroll-behavior: smooth; /* Optional, for smooth scrolling everywhere */
+  scroll-padding-top: 120px; /* This is the key line! Adjust the value if needed. */
 }
 
-/* Estilos del scrollbar personalizado */
+/* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Tema claro */
+  background: #f1f1f1; /* Light theme */
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #090B10; /* Tema oscuro */
+  background: #090b10; /* Dark theme */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #05FD9B;
+  background: #05fd9b;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4DFFB8;
+  background: #4dffb8;
 }
 
-/* Para Firefox */
+/* For Firefox */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #05FD9B #f1f1f1; /* Tema claro */
+  scrollbar-color: #05fd9b #f1f1f1; /* Light theme */
 }
 
 .dark {
-  scrollbar-color: #05FD9B #090B10; /* Tema oscuro */
-}
-/* Portfolio background images - Disabled for Three.js compatibility */
-.portfolio-background {
-  /* background-color: white; */
-  /* background-size: cover; */
-  /* background-position: center; */
-  /* background-repeat: no-repeat; */
-  /* background-attachment: fixed; */
-}
-
-.dark .portfolio-background {
-  /* background-color: #111827; */
-  /* #1C1B22 */
-  /* #0A0F0D */
-  /* #111827 */
-  /* #0B1E1A */
-  /* #1A1A1A */
+  scrollbar-color: #05fd9b #090b10; /* Dark theme */
 }
 
 /* Custom animations for HeroSection */
@@ -327,98 +208,6 @@ html {
   animation: spin-slow 20s linear infinite;
 }
 
-/* Animaciones de entrada */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Clases de animación */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-fade-in-left {
-  animation: fadeInLeft 0.6s ease-out;
-}
-
-.animate-fade-in-right {
-  animation: fadeInRight 0.6s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.6s ease-out;
-}
-
-/* Efectos de partículas de fondo mejorados */
-.dot-background {
-  position: relative;
-}
-
-.dot-background::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle, rgba(83, 252, 24, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-.dark .dot-background::before {
-  background-image: radial-gradient(circle, rgba(59, 192, 15, 0.1) 1px, transparent 1px);
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .glass,
-  .glass-dark {
-    backdrop-filter: blur(10px);
-  }
-}
-
 /* Prefers reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -426,49 +215,21 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   html {
     scroll-behavior: auto;
   }
 }
 
-/* Mejoras de accesibilidad */
+/* Accessibility improvements */
 @media (prefers-contrast: high) {
   :root {
-    --primary-green: #03A062;
-    --primary-green-dark: #1F5F07;
+    --primary-green: #03a062;
+    --primary-green-dark: #1f5f07;
   }
-  
+
   .dark {
-    --text-primary: #FFFFFF;
-    --text-secondary: #E5E7EB;
-  }
-}
-
-/* Estilos para modo de alto contraste */
-@media (prefers-contrast: high) {
-  .glass {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid var(--primary-green);
-  }
-  
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid var(--primary-green-dark);
-  }
-}
-
-/* Estilos para impresión */
-@media print {
-  .glass,
-  .glass-dark {
-    background: white !important;
-    border: 1px solid #000 !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-  }
-  
-  .dot-background::before {
-    display: none;
+    --text-primary: #ffffff;
+    --text-secondary: #e5e7eb;
   }
 }

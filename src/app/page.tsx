@@ -11,22 +11,22 @@ import { ThreeBackgroundProvider } from "@/components/three/ThreeBackgroundProvi
 const PortfolioContent = () => {
   return (
     <main className="min-h-screen">
-        <Layout>
-          <Layout.Content>
-            <Header />
-            <HeroSection />
-            <ProjectSection />
-            <SkillsSection />
-            <ContactSection />
-          </Layout.Content>
-        </Layout>
-      </main>
+      <Layout>
+        <Layout.Content>
+          <Header />
+          <HeroSection />
+          <ProjectSection />
+          <SkillsSection />
+          <ContactSection />
+        </Layout.Content>
+      </Layout>
+    </main>
   );
 };
 
 export default function PortfolioPage() {
   return (
-    <ThreeBackgroundProvider 
+    <ThreeBackgroundProvider
       defaultType="waves"
       defaultIntensity={1}
       showSelector={false}

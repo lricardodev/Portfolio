@@ -1,15 +1,27 @@
 // components/portfolio/ProjectSection.tsx
 import { ProjectCard } from "./ProjectCard";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code, ExternalLink } from "lucide-react";
 
-const PROJECTS = [
+// Types
+interface Project {
+  icon: string;
+  title: string;
+  description: string;
+  tags: string[];
+  liveUrl: string;
+  githubUrl: string;
+  image: string;
+}
+
+// Constants
+const PROJECTS: Project[] = [
   {
     icon: "🚀",
-    title: "Algoritmo de Eratóstenes",
+    title: "Sieve of Eratosthenes Algorithm",
     description:
-      "Una implementación visual e interactiva del famoso algoritmo para encontrar números primos, construido con React y TypeScript.",
-    tags: ["JavaScript", "Algoritmos", "React", "Vite"],
+      "A visual and interactive implementation of the famous algorithm for finding prime numbers, built with React and TypeScript.",
+    tags: ["JavaScript", "Algorithms", "React", "Vite"],
     liveUrl: "#",
     githubUrl: "#",
     image: "/api/placeholder/400/250",
@@ -18,7 +30,7 @@ const PROJECTS = [
     icon: "💼",
     title: "E-commerce Platform",
     description:
-      "Plataforma completa de comercio electrónico con carrito de compras, pagos integrados y panel de administración.",
+      "Complete e-commerce platform with shopping cart, integrated payments, and admin panel.",
     tags: ["React", "Node.js", "MongoDB", "Stripe"],
     liveUrl: "#",
     githubUrl: "#",
@@ -28,7 +40,7 @@ const PROJECTS = [
     icon: "📱",
     title: "Task Management App",
     description:
-      "Aplicación móvil para gestión de tareas con sincronización en tiempo real y notificaciones push.",
+      "Mobile application for task management with real-time synchronization and push notifications.",
     tags: ["React Native", "Firebase", "Redux", "TypeScript"],
     liveUrl: "#",
     githubUrl: "#",
@@ -38,7 +50,7 @@ const PROJECTS = [
     icon: "🎨",
     title: "Design System",
     description:
-      "Sistema de diseño completo con componentes reutilizables, documentación interactiva y herramientas de desarrollo.",
+      "Complete design system with reusable components, interactive documentation, and development tools.",
     tags: ["Storybook", "Figma", "React", "CSS-in-JS"],
     liveUrl: "#",
     githubUrl: "#",
@@ -46,106 +58,111 @@ const PROJECTS = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3,
+// Optimized animation variants
+const ANIMATION_VARIANTS = {
+  container: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
     },
   },
-};
-
-const sectionVariants: Variants = {
-  hidden: { y: 50, opacity: 0, scale: 0.8, rotateX: -15 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    rotateX: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
-      duration: 0.8,
+  section: {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
     },
   },
-};
-
-const cardVariants: Variants = {
-  hidden: { y: 50, opacity: 0, scale: 0.7, rotateY: -20 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    rotateY: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15,
-      duration: 0.8,
+  card: {
+    hidden: { y: 40, opacity: 0, scale: 0.9 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+      },
     },
   },
-};
+} as const;
 
+// Header component
+const SectionHeader = () => (
+  <motion.div
+    variants={ANIMATION_VARIANTS.section}
+    className="text-center space-y-4"
+  >
+    <div className="flex items-center justify-center space-x-3 mb-4">
+      <Code className="w-8 h-8 text-kick-green" />
+      <h2 className="text-4xl md:text-5xl font-bold green-gradient-text">
+        Featured Projects
+      </h2>
+      <ExternalLink className="w-8 h-8 text-kick-green-dark" />
+    </div>
+    <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+      A selection of my most recent projects demonstrating my expertise in
+      modern web development.
+    </p>
+  </motion.div>
+);
+
+// Project grid component
+const ProjectGrid = () => (
+  <motion.div
+    className="grid grid-cols-1 md:grid-cols-2 gap-8"
+    variants={ANIMATION_VARIANTS.container}
+  >
+    {PROJECTS.map((project, index) => (
+      <motion.div key={project.title} variants={ANIMATION_VARIANTS.card}>
+        <ProjectCard {...project} index={index} />
+      </motion.div>
+    ))}
+  </motion.div>
+);
+
+// Call to action component
+const ViewAllLink = () => (
+  <motion.div
+    variants={ANIMATION_VARIANTS.section}
+    className="text-center pt-8"
+  >
+    <motion.a
+      href="#"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="inline-flex items-center space-x-2 text-kick-green dark:text-kick-green-light hover:text-kick-green-dark dark:hover:text-kick-green-accent transition-colors duration-300 font-semibold"
+    >
+      <span>View all projects</span>
+      <ExternalLink className="w-4 h-4" />
+    </motion.a>
+  </motion.div>
+);
+
+// Main component
 export const ProjectSection = () => {
   return (
     <motion.section
       id="projects"
       className="space-y-12"
-      variants={containerVariants}
+      variants={ANIMATION_VARIANTS.container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
     >
-      {/* Encabezado de la sección */}
-      <motion.div variants={sectionVariants} className="text-center space-y-4">
-        <div className="flex items-center justify-center space-x-3 mb-4">
-          <Code className="w-8 h-8 text-kick-green" />
-          <h2 className="text-4xl md:text-5xl font-bold green-gradient-text">
-            Proyectos Destacados
-          </h2>
-          <ExternalLink className="w-8 h-8 text-kick-green-dark" />
-        </div>
-        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-          Una selección de mis proyectos más recientes que demuestran mi
-          experiencia en desarrollo web moderno.
-        </p>
-      </motion.div>
-
-      {/* Grid de proyectos */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-        variants={containerVariants}
-      >
-        {PROJECTS.map((project, index) => (
-          <motion.div
-            key={project.title}
-            variants={cardVariants}
-            custom={index}
-          >
-            <ProjectCard {...project} index={index} />
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Call to action */}
-      <motion.div variants={sectionVariants} className="text-center pt-8">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-block"
-        >
-          <a
-            href="#"
-            className="inline-flex items-center space-x-2 text-kick-green dark:text-kick-green-light hover:text-kick-green-dark dark:hover:text-kick-green-accent transition-colors duration-300 font-semibold"
-          >
-            <span>Ver todos los proyectos</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
-        </motion.div>
-      </motion.div>
+      <SectionHeader />
+      <ProjectGrid />
+      <ViewAllLink />
     </motion.section>
   );
 };
